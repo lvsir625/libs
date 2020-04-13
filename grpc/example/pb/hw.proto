@@ -1,0 +1,36 @@
+syntax="proto3";
+
+package hellworld;
+
+message RpcTestRequest {
+    int32 id=1;
+    string data=2;
+}
+
+message RpcHBRequest {
+
+}
+
+message RpcHBResponse {
+    int32 id=1;
+}
+
+message RpcTestResponse {
+    int32 code=1;
+    string message=2;
+}
+
+message TestMessage {
+    int32 id = 1;
+    string name = 2;
+    repeated int32 id2=3;
+    map<int32, string> mapvalues=4;
+}
+
+service RpcTestService {
+    rpc hello(RpcTestRequest) returns (RpcTestResponse){
+    }
+
+    rpc HB(stream RpcHBRequest) returns (stream RpcHBResponse) {
+    }
+}
